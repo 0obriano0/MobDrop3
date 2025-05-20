@@ -22,8 +22,8 @@ Holo:
 #發光設定
 Glow:
   Show: false
-  # All Or OnlyMobDrop2
-  Mode: "OnlyMobDrop2"
+  # All Or OnlyMobDrop3
+  Mode: "OnlyMobDrop3"
   #設定預設顏色
   Defualt: "&f"
   #依掉落機率顯示物品發光顏色

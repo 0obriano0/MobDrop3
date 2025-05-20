@@ -1,5 +1,5 @@
-name: MobDrop2
-main: com.twsbrian.MobDrop2.MobDrop2
+name: MobDrop3
+main: org.tsob.MobDrop3.MobDrop3
 version: ${full.version}
 author: 0obrino0
 website: www.youtube.com/user/brian041301
@@ -8,7 +8,7 @@ depend: [SmartInvs]
 commands:
    mobdrop:
       description: mobdrop Commands.
-   mobdrop2:
+   mobdrop3:
       description: mobdrop Commands.
    mdop:
       description: mobdrop Commands.
