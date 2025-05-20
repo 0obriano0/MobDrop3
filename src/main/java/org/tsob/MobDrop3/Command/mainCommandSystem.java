@@ -240,7 +240,7 @@ public class mainCommandSystem implements ImainCommandSystem {
   public List<String> getsubCommands(){
     if(subCommands == null && subCommand_path != null) {
       subCommands = new ArrayList<String>();
-      URL jarURL = MobDrop3.plugin.getClass().getResource("/com/twsbrian/" + DataBase.pluginName + "/Command" + subCommand_path);
+      URL jarURL = MobDrop3.plugin.getClass().getResource("/org/tsob/" + DataBase.pluginName + "/Command" + subCommand_path);
         URI uri;
       try {
         FileSystem fileSystem = null;
@@ -248,7 +248,7 @@ public class mainCommandSystem implements ImainCommandSystem {
         Path myPath;
         if (uri.getScheme().equals("jar")) {
             fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-            myPath = fileSystem.getPath("/com/twsbrian/"+ DataBase.pluginName +"/Command" + subCommand_path);
+            myPath = fileSystem.getPath("/org/tsob/"+ DataBase.pluginName +"/Command" + subCommand_path);
         } else {
             myPath = Paths.get(uri);
         }

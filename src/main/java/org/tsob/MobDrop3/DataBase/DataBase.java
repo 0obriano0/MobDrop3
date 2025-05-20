@@ -23,6 +23,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.tsob.MobDrop3.AnsiColor;
 import org.tsob.MobDrop3.MobDrop3;
+import org.tsob.MobDrop3.Command.ImainCommandSystem;
+import org.tsob.MobDrop3.Command.ToolCommandSystem;
 import org.tsob.MobDrop3.FileIO.FileDataBaseInfo;
 import org.tsob.MobDrop3.FileIO.FileInventory;
 import org.tsob.MobDrop3.FileIO.FileMessage;
@@ -113,7 +115,7 @@ public class DataBase {
   public static List<String> getCommands(Plugin plugin){
     if(Commands == null) {
       Commands = new ArrayList<String>();
-      URL jarURL = plugin.getClass().getResource("/com/twsbrian/" + pluginName + "/Command");
+      URL jarURL = plugin.getClass().getResource("/org/tsob/" + pluginName + "/Command");
         URI uri;
       try {
         FileSystem fileSystem = null;
@@ -121,7 +123,7 @@ public class DataBase {
         Path myPath;
         if (uri.getScheme().equals("jar")) {
             fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-            myPath = fileSystem.getPath("/com/twsbrian/"+ pluginName +"/Command");
+            myPath = fileSystem.getPath("/org/tsob/"+ pluginName +"/Command");
         } else {
             myPath = Paths.get(uri);
         }
@@ -134,9 +136,11 @@ public class DataBase {
           String file = path[path.length - 1];
           if(file.matches("(.*)class$")) {
             file = file.split("\\.")[0];
-            if(file.matches("^Command.*")) {
+            if(file.matches("^Command.*") && !file.contains("$")) {
               String filename = file.split("Command")[1];
-              Commands.add(filename);
+              // 用來判斷 command 是否存在
+              ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(filename);
+              if (cmd != null) Commands.add(filename);
             }
           }
             //System.out.println(it.next());

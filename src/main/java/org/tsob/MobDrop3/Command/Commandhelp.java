@@ -23,6 +23,7 @@ public class Commandhelp extends mainCommandSystem{
     sender.sendMessage("=============== MobDrop3 ===============");
     sender.sendMessage(" ");
     for(String command_value :DataBase.getCommands(MobDrop3.plugin)) {
+      sender.sendMessage("debug: " + command_value);
       ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(command_value);
       if(cmd.hasPermission(sender))
         sender.sendMessage(cmd.getHelp());
