@@ -6,10 +6,10 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 
 @SuppressWarnings("deprecation")
 public class ItemPickupListener implements Listener{
-	@EventHandler
+  @EventHandler
     public void itemPickup(PlayerPickupItemEvent e) {
-		
-//		Item drop = e.getItem();
-//		DataBase.Print(e.getPlayer().getName() + " get item: " + drop.getCustomName() + " | " + new Itemset(drop.getItemStack()).getItemName() + " | UUID: " + drop.getUniqueId());
-	}
+    
+  //  Item drop = e.getItem();
+  //  DataBase.Print(e.getPlayer().getName() + " get item: " + drop.getCustomName() + " | " + new Itemset(drop.getItemStack()).getItemName() + " | UUID: " + drop.getUniqueId());
+  }
 }

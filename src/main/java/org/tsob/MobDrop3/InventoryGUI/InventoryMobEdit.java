@@ -12,31 +12,30 @@ import fr.minuskube.inv.content.InventoryProvider;
 
 public class InventoryMobEdit implements InventoryProvider{
 
-	Mob mob;
-	
-	public InventoryMobEdit(Mob mob) {
-		this.mob = mob;
-	}
+  Mob mob;
+  
+  public InventoryMobEdit(Mob mob) {
+    this.mob = mob;
+  }
 
-	public static SmartInventory getInventory(Mob Mob) {
-        return SmartInventory.builder()
-                .provider(new InventoryMobEdit(Mob))
-                .size(1, 9)
-                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("MobEdit").replaceAll("%mobname%", Mob.getMobName()))
-                .build();
-	}
-	
-	@Override
-	public void init(Player player, InventoryContents contents) {
-		// TODO Auto-generated method stub
-		contents.set(0, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+  public static SmartInventory getInventory(Mob Mob) {
+    return SmartInventory.builder()
+                        .provider(new InventoryMobEdit(Mob))
+                        .size(1, 9)
+                        .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("MobEdit").replaceAll("%mobname%", Mob.getMobName()))
+                        .build();
+  }
+  
+  @Override
+  public void init(Player player, InventoryContents contents) {
+   // TODO Auto-generated method stub
+    contents.set(0, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player)));
-	}
+  }
 
-	@Override
-	public void update(Player player, InventoryContents contents) {
-		// TODO Auto-generated method stub
-		
-	}
+  @Override
+  public void update(Player player, InventoryContents contents) {
+   // TODO Auto-generated method stub
+  }
 
 }
