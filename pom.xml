@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.tsob</groupId>
-  <artifactId>MobDrop3</artifactId>
-  <version>0.0.1</version>
+  <artifactId>MobDrop</artifactId>
+  <version>3.0.1</version>
   <packaging>jar</packaging>
 
   <name>MobDorp3</name>

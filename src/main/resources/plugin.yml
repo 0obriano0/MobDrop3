@@ -1,5 +1,5 @@
-name: MobDrop3
-main: org.tsob.MobDrop3.MobDrop3
+name: MobDrop
+main: org.tsob.MobDrop.MobDrop
 version: ${full.version}
 author: 0obrino0
 website: www.youtube.com/user/brian041301
@@ -7,70 +7,68 @@ api-version: 1.13
 depend: [SmartInvs]
 commands:
   mobdrop:
-      description: mobdrop Commands.
-  mobdrop3:
-      description: mobdrop Commands.
+    description: mobdrop Commands.
   mdop:
-      description: mobdrop Commands.
+    description: mobdrop Commands.
 permissions:
   mobdrop.*:
-      default: op
-      description: Give players with op everything by default
-      children:
-        mobdrop.user.*: true
-        mobdrop.admin.*: true
+    default: op
+    description: Give players with op everything by default
+    children:
+      mobdrop.user.*: true
+      mobdrop.admin.*: true
   mobdrop.user.*:
-      default: true
-      children:
-        mobdrop.user: true
-        mobdrop.user.help: true
-        mobdrop.user.inventory.*: true
-        mobdrop.user.hhh: true
+    default: true
+    children:
+      mobdrop.user: true
+      mobdrop.user.help: true
+      mobdrop.user.inventory.*: true
+      mobdrop.user.hhh: true
   mobdrop.user.inventory.*:
-      default: true
-      children:
-        mobdrop.user.inventory.menu: true
+    default: true
+    children:
+      mobdrop.user.inventory.menu: true
   mobdrop.admin.*:
-      default: op
-      children:
-        mobdrop.admin: true
-        mobdrop.admin.items.*: true
-        mobdrop.admin.reload: true
-        mobdrop.admin.test: true
-        mobdrop.admin.inventory.*: true
+    default: op
+    children:
+      mobdrop.admin: true
+      mobdrop.admin.items.*: true
+      mobdrop.admin.reload: true
+      mobdrop.admin.test: true
+      mobdrop.admin.inventory.*: true
   mobdrop.admin.items.*:
-      default: op
-      children:
-        mobdrop.admin.items.add: true
-        mobdrop.admin.items.get: true
-        mobdrop.admin.items.remove: true
-        mobdrop.admin.items.set.*: true
+    default: op
+    children:
+      mobdrop.admin.items.add: true
+      mobdrop.admin.items.get: true
+      mobdrop.admin.items.remove: true
+      mobdrop.admin.items.set.*: true
   mobdrop.admin.items.set.*:
-      default: op
-      children:
-        mobdrop.admin.items.set.name: true
-        mobdrop.admin.items.set.addlore: true
-        mobdrop.admin.items.set.durability: true
-        mobdrop.admin.items.set.amount: true
+    default: op
+    children:
+      mobdrop.admin.items.set.name: true
+      mobdrop.admin.items.set.addlore: true
+      mobdrop.admin.items.set.durability: true
+      mobdrop.admin.items.set.amount: true
   mobdrop.admin.inventory.*:
-      default: op
-      children:
-        mobdrop.admin.inventory.items.*: true
-        mobdrop.admin.inventory.mob.*: true
+    default: op
+    children:
+      mobdrop.admin.inventory.items.*: true
+      mobdrop.admin.inventory.mob.*: true
   mobdrop.admin.inventory.items.*:
-      default: op
-      children:
-        mobdrop.admin.inventory.items.get: true
+    default: op
+    children:
+      mobdrop.admin.inventory.items.get: true
   mobdrop.admin.inventory.mob.*:
-      default: op
-      children:
-        mobdrop.admin.inventory.mod.add: true
-        mobdrop.admin.inventory.mob.edit: true
-        mobdrop.admin.inventory.mod.remove: true
-        mobdrop.admin.inventory.mob.item.*: true
+    default: op
+    children:
+      mobdrop.admin.inventory.mod.add: true
+      mobdrop.admin.inventory.mob.edit: true
+      mobdrop.admin.inventory.mod.remove: true
+      mobdrop.admin.inventory.mob.item.*: true
   mobdrop.admin.inventory.mob.item.*:
-      default: op
-      children:
-        mobdrop.admin.inventory.mob.item.add: true
-        mobdrop.admin.inventory.mob.item.edit: true
-        mobdrop.admin.inventory.mob.item.remove: true
+    default: op
+    children:
+      mobdrop.admin.inventory.mob.item.add: true
+      mobdrop.admin.inventory.mob.item.edit: true
+      mobdrop.admin.inventory.mob.item.remove: true
