@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.twsbrian</groupId>
-  <artifactId>MobDrop2</artifactId>
+  <groupId>org.tsob</groupId>
+  <artifactId>MobDrop3</artifactId>
   <version>0.0.1</version>
   <packaging>jar</packaging>
 
-  <name>MobDorp2</name>
+  <name>MobDorp3</name>
   <url>http://maven.apache.org</url>
 
   <repositories>

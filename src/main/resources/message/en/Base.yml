@@ -1,5 +1,5 @@
 Message:
-  Title: "&b[MobDrop2] "
+  Title: "&b[MobDrop3] "
   MobDropItem: "§f%mob% §6dropped §f%item% §6X §b%item_num% §6!"
   Gobal_MobDropItem: "§6Congratulations! §a%player% §6kill§f %mob% §6and dropped §a%item% §6X §b%item_num% §6!"
   Data_Re_read: "Re-read Data..."
