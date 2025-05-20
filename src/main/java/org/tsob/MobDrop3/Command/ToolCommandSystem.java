@@ -13,7 +13,7 @@ public class ToolCommandSystem {
     public static ImainCommandSystem getCommandClass(String command) {
       ImainCommandSystem cmd = null;
         try {
-            cmd = (ImainCommandSystem) MobDrop3.class.getClassLoader().loadClass("com.twsbrian." + DataBase.pluginName + ".Command" + ".Command" + command).getDeclaredConstructor().newInstance();
+            cmd = (ImainCommandSystem) MobDrop3.class.getClassLoader().loadClass("org.tsob." + DataBase.pluginName + ".Command" + ".Command" + command).getDeclaredConstructor().newInstance();
         }catch(InstantiationException ex) {
           if(DataBase.getDebug())  ex.printStackTrace();
         }catch (Exception ex) {
