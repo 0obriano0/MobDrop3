@@ -28,6 +28,7 @@ import org.tsob.MobDrop.Command.ToolCommandSystem;
 import org.tsob.MobDrop.FileIO.FileDataBaseInfo;
 import org.tsob.MobDrop.FileIO.FileInventory;
 import org.tsob.MobDrop.FileIO.FileMessage;
+import org.tsob.MobDrop.FileIO.JsonFileIOMinecraftLang;
 
 
 /**
@@ -80,6 +81,12 @@ public class DataBase {
   public static FileInventory fileInventory = new FileInventory();
   public static Map<String, MessageSet> NewCustomMobName = new HashMap<String, MessageSet>();
   
+
+  /**
+   * Minecraft Lang 設定檔
+   */
+  public static JsonFileIOMinecraftLang fileMinecraftLang = new JsonFileIOMinecraftLang(MobDrop.plugin.getConfig().getString("lang"));
+
   /**
    * 傳給玩家的訊息加上 Message.Title
    * @param player 玩家

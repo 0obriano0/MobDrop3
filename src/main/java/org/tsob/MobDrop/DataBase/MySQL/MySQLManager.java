@@ -388,7 +388,7 @@ public class MySQLManager {
       if (success) {
         callback.onSuccess(true);
       } else {
-        callback.onFailure(err == null ? err : new Exception("SQL execution failed"));
+        callback.onFailure(err != null ? err : new Exception("SQL execution failed"));
       }
     });
   }

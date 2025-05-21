@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.xml.crypto.Data;
+
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -155,5 +157,6 @@ public class MobDrop extends JavaPlugin{
       DataBase.fileMessage.reloadFile();
       DataBase.fileDataBaseInfo.reloadFile();
       DataBase.fileInventory.reloadFile();
+      DataBase.fileMinecraftLang.reloadWithLangAndVersion(MobDrop.plugin.getConfig().getString("lang"));
     }
 }

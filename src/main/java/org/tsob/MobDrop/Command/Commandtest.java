@@ -57,29 +57,35 @@ public class Commandtest extends mainCommandSystem{
     // }
 
     // 異步執行測試
-    DataBase.Print("查詢中...");
-    if (args.length >= 2) {
-      int page = Integer.parseInt(args[0]);
-      int size = Integer.parseInt(args[1]);
-      DataBase.sql.ItemsGetAsync(page, size, new Callback<Map<String,Itemset>>() {
-        @Override
-        public void onSuccess(Map<String, Itemset> result) {
-          DataBase.Print("ItemNo 列表 (第 " + page + " 頁, 每頁 " + size + " 筆):");
-          for (Map.Entry<String, Itemset> entry : result.entrySet()) {
-            String itemNo = entry.getKey();
-            Itemset item = entry.getValue();
-            DataBase.Print("ItemNo: " + itemNo + ", Item: " + item);
-          }
-        }
+    // DataBase.Print("查詢中...");
+    // if (args.length >= 2) {
+    //   int page = Integer.parseInt(args[0]);
+    //   int size = Integer.parseInt(args[1]);
+    //   DataBase.sql.ItemsGetAsync(page, size, new Callback<Map<String,Itemset>>() {
+    //     @Override
+    //     public void onSuccess(Map<String, Itemset> result) {
+    //       DataBase.Print("ItemNo 列表 (第 " + page + " 頁, 每頁 " + size + " 筆):");
+    //       for (Map.Entry<String, Itemset> entry : result.entrySet()) {
+    //         String itemNo = entry.getKey();
+    //         Itemset item = entry.getValue();
+    //         DataBase.Print("ItemNo: " + itemNo + ", Item: " + item);
+    //       }
+    //     }
 
-        @Override
-        public void onFailure(Exception e) {
-          DataBase.Print("查詢失敗: " + e.getMessage());
-        }
-      });
-    }
+    //     @Override
+    //     public void onFailure(Exception e) {
+    //       DataBase.Print("查詢失敗: " + e.getMessage());
+    //     }
+    //   });
+    // }
     
-    DataBase.Print("test");
+    // DataBase.Print("test");
+
+    String path = "test";
+    if (args.length >= 1) {
+      path = args[0];
+    }
+    DataBase.Print(DataBase.fileMinecraftLang.getString(path));
   }
 }
   
