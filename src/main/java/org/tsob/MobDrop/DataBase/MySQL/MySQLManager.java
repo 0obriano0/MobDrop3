@@ -335,6 +335,63 @@ public class MySQLManager {
     });
   }
 
+  /**
+   * 非同步執行多條 SQL 指令，可選擇是否需要 rollback
+   * @param commands 多條 SQL 指令
+   * @param transaction 是否需要 rollback
+   * @param callback 執行結果 callback
+   */
+  public void executeUpdateAsync(List<String> commands, boolean transaction, Callback<Boolean> callback) {
+    Bukkit.getScheduler().runTaskAsynchronously(MobDrop.plugin, () -> {
+      Statement stmt = null;
+      if(conn==null) open();
+      boolean success = false;
+      Exception err = null;
+      try {
+        if (transaction) {
+          conn.setAutoCommit(false);
+        }
+
+        stmt = conn.createStatement();
+        String sql = "use " + this.db;
+        stmt.executeUpdate(sql);
+
+        for (String command : commands) {
+          stmt.executeUpdate(command);
+        }
+
+        if (transaction) {
+          conn.commit();
+        }
+        success = true;
+      } catch (Exception e) {
+        if (transaction && conn != null) {
+          try {
+            conn.rollback();
+          } catch (SQLException ex) {
+            ex.printStackTrace();
+          }
+        }
+        e.printStackTrace();
+        err = e;
+      } finally {
+        try {
+          if (stmt != null) stmt.close();
+          if (conn != null) {
+            if (transaction) conn.setAutoCommit(true);
+            if (!this.autoReconnect) close();
+          }
+        } catch (SQLException se2) {
+          se2.printStackTrace();
+        }
+      }
+      if (success) {
+        callback.onSuccess(true);
+      } else {
+        callback.onFailure(err == null ? err : new Exception("SQL execution failed"));
+      }
+    });
+  }
 
   /**
    * 傳送查詢相關指令 並轉換成 list map 模式

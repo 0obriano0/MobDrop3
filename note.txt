@@ -31,3 +31,6 @@
   8. 掉落保護?
     - 待想
   
+  9. 額外
+    1. 增加API 用來記錄有多少server 使用我的插件 https://bstats.org/plugin/bukkit/ItemNBTAPI/1058
+  
