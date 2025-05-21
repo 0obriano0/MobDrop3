@@ -2,13 +2,10 @@ package org.tsob.MobDrop.Command;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.tsob.MobDrop.DataBase.Callback;
 import org.tsob.MobDrop.DataBase.DataBase;
-import org.tsob.MobDrop.DataBase.Itemset;
 
 public class Commandtest extends mainCommandSystem{
   public Commandtest() {
