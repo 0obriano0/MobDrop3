@@ -59,7 +59,7 @@ public interface IItemset {
   
   /**
    * 新增文字敘述
-   * @param lore 訊息資料(type List<String>)
+   * @param lore 訊息資料(type List of String)
    * @return Itemset
    */
   Itemset setLore(List<String> lore) ;
@@ -73,7 +73,7 @@ public interface IItemset {
   
   /**
    * 增加文字敘述
-   * @param lore 訊息資料(type List<String>)
+   * @param lore 訊息資料(type List of String)
    * @return Itemset
    */
   Itemset addLore(List<String> lore);

@@ -33,7 +33,7 @@ public class mainCommandSystem implements ImainCommandSystem {
    * 定義一個指令
    * @param id 指令ID
    * @param help 說明敘述
-   * @param permissions 權限(type : List<String>)
+   * @param permissions 權限(type : List of String)
    */
   protected mainCommandSystem(final String id,final String help,final List<String> permissions) {
         this.id = id;
@@ -46,7 +46,7 @@ public class mainCommandSystem implements ImainCommandSystem {
    * 定義一個指令
    * @param id 指令ID
    * @param help 說明敘述
-   * @param permissions 權限(type : List<String>)
+   * @param permissions 權限(type : List of String)
    * @param subCommand_path 指令的路徑
    */
   protected mainCommandSystem(final String id,final String help,final List<String> permissions, String subCommand_path) {

@@ -1,5 +1,7 @@
 package org.tsob.MobDrop.FileIO;
 
+import javax.xml.crypto.Data;
+
 import org.bukkit.Bukkit;
 import org.tsob.MobDrop.DataBase.DataBase;
 
@@ -12,6 +14,7 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
    */
   public JsonFileIOMinecraftLang(String langFromConfig) {
     super(getLangPath(resolveLang(langFromConfig)), getLangFileName(getMinecraftVersion()));
+    reloadNode();
   }
 
   /**
@@ -68,6 +71,7 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
     // setFileName(getMinecraftVersion());
     setUrl(getLangPath(resolveLang(lang)));
     reloadFile();
+    reloadNode();
   }
 
 
@@ -84,5 +88,17 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
         break;
     }
     return node;
+  }
+
+  // 將 JsonNode 轉成我要的資料
+  private void reloadNode() {
+    if (data == null)
+      return;
+    int count = 0;
+    for (JsonNode jsonNode : data) {
+      count++;
+    }
+
+    DataBase.Print("MinecraftLang 讀取到 " + count + " 筆資料");
   }
 }

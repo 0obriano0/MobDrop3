@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>MobDorp3</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/0obriano0/MobDrop3</url>
 
   <repositories>
     <!-- Spigot API -->
