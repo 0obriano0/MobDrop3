@@ -25,7 +25,7 @@ public class InventoryMenu implements InventoryProvider{
   
   @Override
   public void init(Player player, InventoryContents contents) {
-    
+    contents.set(0, 0, ClickableItem.of(InventoryTools.createPageButton(Material.GRASS_BLOCK, DataBase.fileInventory.getInventorTitle("Minecraft_Items")), e -> InventoryMinecraft_Origin_Item.INVENTORY.open(player)));
     contents.set(1, 2, ClickableItem.of(mob_button("Items"), e -> InventoryItemTable.getInventory().open(player)));
     contents.set(1, 4, ClickableItem.of(mob_button("Normal"), e -> InventoryMobs.getInventory(false).open(player)));
     contents.set(1, 6, ClickableItem.of(mob_button("Custom"), e -> InventoryMobs.getInventory(true).open(player)));

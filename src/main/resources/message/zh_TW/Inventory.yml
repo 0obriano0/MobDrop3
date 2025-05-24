@@ -54,6 +54,8 @@ init:
       - "&c資料有誤，請確認:"
       - "%error%"
 Inventory:
+  Minecraft_Items:
+    Title: "Minecraft 原版物品"
   Menu:
     Title: "目錄"
     Button:

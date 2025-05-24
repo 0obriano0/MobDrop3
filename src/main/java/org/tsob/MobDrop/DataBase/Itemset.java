@@ -75,8 +75,18 @@ public class Itemset implements IItemset {
   public String getItemName() {
     if (Item.hasItemMeta())
       return Item.getItemMeta().getDisplayName();
-    else
-      return Item.getType().name();
+    else {
+      String typeName = Item.getType().name();
+      String name = "";
+      if (DataBase.fileMinecraftLang.Minecraft_Items.get(typeName.toLowerCase()) != null) {
+        name = DataBase.fileMinecraftLang.Minecraft_Items.get(typeName.toLowerCase());
+      }
+
+      if (name.isEmpty()) {
+        name = typeName;
+      }
+      return name;
+    }
   }
 
   @Override

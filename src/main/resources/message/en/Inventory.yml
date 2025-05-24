@@ -54,6 +54,8 @@ init:
       - "&cThere's something wrong with data, please check:"
       - "%error%"
 Inventory:
+  Minecraft_Items:
+    Title: "Minecraft Origin Items"
   Menu:
     Title: "Menu"
     Button:

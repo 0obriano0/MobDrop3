@@ -37,7 +37,7 @@ public class MobDrop extends JavaPlugin{
         DataBase.fileMessage.reloadFile();
         DataBase.fileDataBaseInfo.reloadFile();
         DataBase.fileInventory.reloadFile();
-
+        DataBase.fileMinecraftLang.reloadWithLangAndVersion(MobDrop.plugin.getConfig().getString("lang"));
   }
   
   @Override

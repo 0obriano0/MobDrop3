@@ -1,13 +1,17 @@
 package org.tsob.MobDrop.FileIO;
 
-import javax.xml.crypto.Data;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.tsob.MobDrop.AnsiColor;
 import org.tsob.MobDrop.DataBase.DataBase;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class JsonFileIOMinecraftLang extends JsonFileIO {
+
+  public Map<String,String> Minecraft_Items = new HashMap<String,String>();
 
   /**
    * @param langFromConfig 語言設定，抓不到自動用 en_us
@@ -50,7 +54,7 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
     // message/zh_TW/minecraft/1.21.5.json
 
     String path = String.format("message/%s/minecraft", lang);
-    DataBase.Print(path);
+    DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Lang Path: "+ AnsiColor.GREEN + path);
     return path;
   }
 
@@ -59,9 +63,9 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
       version = "1.21.5"; // 預設版本號
     // message/zh_TW/minecraft/1.21.5.json
 
-    String path = String.format("%s.json", version);
-    DataBase.Print(path);
-    return path;
+    String fileName = String.format("%s.json", version);
+    DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Lang FileName: " + AnsiColor.GREEN + fileName);
+    return fileName;
   }
 
   /**
@@ -95,10 +99,44 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
     if (data == null)
       return;
     int count = 0;
-    for (JsonNode jsonNode : data) {
+    java.util.Iterator<Map.Entry<String, JsonNode>> iterator = data.fields();
+    while (iterator.hasNext()) {
+      Map.Entry<String, JsonNode> entry = iterator.next();
+      String key = entry.getKey();
+      String value = entry.getValue().asText();
+
+      if (key == null || key.isEmpty() || value == null || value.isEmpty()) {
+        continue; // 跳過空鍵或值
+      }
       count++;
+
+      String minecrat_name = "";
+      if (key.contains("item.minecraft")) {
+        minecrat_name = key.replace("item.minecraft.", "");
+      } else if (key.contains("block.minecraft")) {
+        minecrat_name = key.replace("block.minecraft.", "");
+      } else {
+        continue; // 如果不是 item 或 block 的鍵，則跳過
+      }
+
+      if (minecrat_name.isEmpty()) {
+        continue; // 如果處理後的名稱是空的，則跳過
+      }
+
+      // 如果 minecrat_name 有 . 就跳過
+      if (minecrat_name.contains(".")) {
+        // DataBase.Print("MinecraftLang 鍵包含點: " + minecrat_name);
+        continue; // 如果名稱包含點，則跳過
+      }
+
+      if (Minecraft_Items.containsKey(minecrat_name)) {
+        // DataBase.Print("MinecraftLang 重複鍵: " + minecrat_name);
+        continue; // 如果已經存在這個鍵，則跳過
+      }
+      Minecraft_Items.put(minecrat_name, value);
     }
 
-    DataBase.Print("MinecraftLang 讀取到 " + count + " 筆資料");
+    DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Lang Loads: " + AnsiColor.GREEN + count);
+    DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Origin Items: " + AnsiColor.GREEN + Minecraft_Items.size());
   }
 }

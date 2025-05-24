@@ -3,6 +3,8 @@ package org.tsob.MobDrop.Command;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.xml.crypto.Data;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.tsob.MobDrop.DataBase.DataBase;
@@ -82,7 +84,8 @@ public class Commandtest extends mainCommandSystem{
     if (args.length >= 1) {
       path = args[0];
     }
-    DataBase.Print(DataBase.fileMinecraftLang.getString(path));
+    // DataBase.Print(DataBase.fileMinecraftLang.getString(path));
+    DataBase.Print(DataBase.fileMinecraftLang.Minecraft_Items.get(path.toLowerCase()));
   }
 }
   
