@@ -2,6 +2,7 @@ package org.tsob.MobDrop.Listener;
 
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
@@ -81,6 +82,7 @@ public class DeathListener implements Listener{
                   // 顯示掉落訊息
                   if(MobDrop.plugin.getConfig().getBoolean("GobalMessage.Show",true) && MobDrop.plugin.getConfig().getDouble("GobalMessage.Chance",20) >= MobDropItem.Chance) 
                     MobDrop.server.broadcastMessage("§b" + DataBase.fileMessage.getString("Message.Title") + " " + formatmessage(DataBase.fileMessage.getString("Message.Gobal_MobDropItem"), killBy, sEntitlyName, MobDropItem, MobDropItem_));
+                    // broadcastItemMessage(MobDropItem_, DataBase.fileMessage.getString("Message.Title"));
                 
                   DataBase.sendMessage(killBy, "§f" + formatmessage(DataBase.fileMessage.getString("Message.MobDropItem"), killBy, sEntitlyName, MobDropItem, MobDropItem_));
                 }
@@ -125,5 +127,22 @@ public class DeathListener implements Listener{
       drop.setCustomNameVisible(true);
     }
     DataBase.Print("Item: " + itemset.getItemName() + " UUID: " + drop.getUniqueId());
+  }
+
+  private void broadcastItemMessage(ItemStack itemStack, String title) {
+    Itemset itemset = new Itemset(itemStack);
+    String nbtString = itemset.getItemNbtString().replace("\"", "\\\"");
+    String displayName = (itemStack.hasItemMeta() && itemStack.getItemMeta().hasDisplayName())
+        ? itemStack.getItemMeta().getDisplayName()
+        : itemStack.getType().name();
+
+    String tellraw = "[\"\","
+            + "{\"text\":\"§b" + title + " \"},"
+            + "{\"text\":\"[" + displayName + "]\","
+            + "\"color\":\"aqua\","
+            + "\"hoverEvent\":{\"action\":\"show_item\",\"value\":\"" + nbtString + "\"}},"
+            + "{\"text\":\" x" + itemStack.getAmount() + "\"}"
+            + "]";
+    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw @a " + tellraw);
   }
 }

@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.lang.reflect.Method;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -282,4 +284,82 @@ public class Itemset implements IItemset {
         }
         return Item;
     }
-}
+
+  @Override
+  public String getItemNbtString() {
+    try {
+      String version = getServerVersion();
+      if (version == null || version.isEmpty()) {
+        System.err.println("[MobDrop] getServerVersion() failed, cannot find CraftItemStack class.");
+        return "";
+      }
+      // CraftItemStack
+      Class<?> craftItemStackClazz = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack");
+      Method asNmsCopy = craftItemStackClazz.getMethod("asNMSCopy", ItemStack.class);
+      Object nmsItem = asNmsCopy.invoke(null, Item);
+
+      // NBTTagCompound
+      Class<?> nbtTagClazz;
+      if (version.startsWith("v1_17") || version.startsWith("v1_18") || version.startsWith("v1_19") || version.startsWith("v1_20")) {
+          nbtTagClazz = Class.forName("net.minecraft.nbt.NBTTagCompound");
+      } else {
+          nbtTagClazz = Class.forName("net.minecraft.server." + version + ".NBTTagCompound");
+      }
+      Object nbtTag = nbtTagClazz.getConstructor().newInstance();
+
+      // save (NMS ItemStack -> NBT)
+      Method saveMethod = null;
+      try {
+        // 1.17+ usually 'save'
+        saveMethod = nmsItem.getClass().getMethod("save", nbtTagClazz);
+      } catch (NoSuchMethodException ex) {
+        try {
+          // 1.13~1.16 may be 'b'
+          saveMethod = nmsItem.getClass().getMethod("b", nbtTagClazz);
+        } catch (NoSuchMethodException ex2) {
+          // 1.20.2+ may be 'c'
+          saveMethod = nmsItem.getClass().getMethod("c", nbtTagClazz);
+        }
+      }
+      saveMethod.invoke(nmsItem, nbtTag);
+
+      // toString
+      Method toStringMethod = nbtTagClazz.getMethod("toString");
+      return (String) toStringMethod.invoke(nbtTag);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "";
+    }
+  }
+
+  /**
+   * 取得 NMS 版本字串（如 v1_20_R1）
+   */
+  private static String getServerVersion() {
+    String name = org.bukkit.Bukkit.getServer().getClass().getPackage().getName();
+    // name 應該像 org.bukkit.craftbukkit.v1_20_R1
+    String[] parts = name.split("\\.");
+    if (parts.length >= 4) {
+      return parts[3];
+    } else {
+      // fallback，避免出錯
+      return "";
+    }
+  }
+
+  /**
+   * 取得 NBTTagCompound 路徑
+   */
+  private static String getNbtTagCompoundPath() {
+    // 區分 1.16 以上與以下的 NBT 路徑
+    String version = getServerVersion();
+    if (version.startsWith("v1_16") || version.compareTo("v1_16") > 0) {
+      // 1.16 以上
+      return "net.minecraft.nbt.NBTTagCompound";
+    } else {
+      // 1.16 以下
+      return "net.minecraft.server." + version + ".NBTTagCompound";
+    }
+  }
+
+  }

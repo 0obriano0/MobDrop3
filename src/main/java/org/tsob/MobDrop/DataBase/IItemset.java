@@ -139,5 +139,11 @@ public interface IItemset {
   /*
    * Base64 轉 物品 Loading
    */
-//  ItemStack itemStackFromBase64(String data);
+  //  ItemStack itemStackFromBase64(String data);
+
+  /**
+   * 取得 Bukkit ItemStack 的完整 NBT 字串
+   * @return 完整的 NBT 字串
+   */
+  String getItemNbtString();
 }
