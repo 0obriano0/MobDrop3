@@ -17,7 +17,7 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
    * @param langFromConfig 語言設定，抓不到自動用 en_us
    */
   public JsonFileIOMinecraftLang(String langFromConfig) {
-    super(getLangPath(resolveLang(langFromConfig)), getLangFileName(getMinecraftVersion()));
+    super(getVersionPath(getMinecraftVersion()), getLangFileName(resolveLang(langFromConfig)));
     reloadNode();
   }
 
@@ -48,22 +48,26 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
   /**
    * 取得完整路徑
    */
-  private static String getLangPath(String lang) {
-    if (lang == null || lang.isEmpty())
-      lang = "en";
-    // message/zh_TW/minecraft/1.21.5.json
+  private static String getVersionPath(String version) {
+    if (version == null || version.isEmpty())
+      version = "1.21.5"; // 預設版本號
 
-    String path = String.format("message/%s/minecraft", lang);
-    DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Lang Path: "+ AnsiColor.GREEN + path);
+    String path = String.format("mc_lang/%s", version);
+    DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Version Path: " + AnsiColor.GREEN + path);
     return path;
   }
 
-  private static String getLangFileName(String version) {
-    if (version == null || version.isEmpty())
-      version = "1.21.5"; // 預設版本號
-    // message/zh_TW/minecraft/1.21.5.json
+  private static String getLangFileName(String lang) {
+    if (lang == null || lang.isEmpty())
+      lang = "en_us"; // 預設語言
 
-    String fileName = String.format("%s.json", version);
+    if (lang == "en") {
+      lang = "en_us"; // Minecraft 默認語言
+    }
+
+    lang = lang.toLowerCase(); // 確保語言是小寫
+
+    String fileName = String.format("%s.json", lang);
     DataBase.Print(AnsiColor.YELLOW + "[LoadMinecraftLang] Minecraft Lang FileName: " + AnsiColor.GREEN + fileName);
     return fileName;
   }
@@ -72,8 +76,7 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
    * 如果需要重新指定語言和版本，可用這方法。
    */
   public void reloadWithLangAndVersion(String lang) {
-    // setFileName(getMinecraftVersion());
-    setUrl(getLangPath(resolveLang(lang)));
+    setFileName(getLangFileName(resolveLang(lang)));
     reloadFile();
     reloadNode();
   }

@@ -173,6 +173,10 @@
           <include>**/*.json</include>
           <include>**/*.xml</include>
         </includes>
+        <!-- 排除特定資料夾 -->
+        <!-- <excludes>
+          <exclude>your-folder-name/**</exclude>
+        </excludes> -->
         <filtering>true</filtering>
       </resource>
     </resources>

@@ -6,11 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-import java.lang.reflect.Method;
 
 import javax.annotation.Nonnull;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -30,7 +28,7 @@ import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 public class Itemset implements IItemset {
   private ItemStack Item;
   private int mysqlNo = -1;
-  
+
   public int getMysqlNo() {
     return mysqlNo;
   }
@@ -46,7 +44,7 @@ public class Itemset implements IItemset {
   public Itemset(@Nonnull ItemStack item) {
     Item = item.clone();
   }
-  
+
   /**
    * Base64 轉 物品 Loading
    * @param Base64
@@ -54,7 +52,7 @@ public class Itemset implements IItemset {
   public Itemset(@Nonnull String Base64) {
     this.itemStackFromBase64(Base64);
   }
-  
+
   @Override
   public ItemMeta getItemMeta() {
     return Item.getItemMeta();
@@ -96,10 +94,10 @@ public class Itemset implements IItemset {
     Damageable meta = (Damageable) getItemMeta();
     meta.setDamage(Durability);
     Item.setItemMeta((ItemMeta) meta);
-    //Item.setDurability(Durability);
+    // Item.setDurability(Durability);
     return this;
   }
-  
+
   @Override
   public int getDurability() {
     Damageable meta = (Damageable) getItemMeta();
@@ -110,10 +108,11 @@ public class Itemset implements IItemset {
   public List<String> getLore() {
     ItemMeta newItemMeta = getItemMeta();
     List<String> lore_list = new ArrayList<String>();
-    if(newItemMeta.hasLore()) lore_list = newItemMeta.getLore();
+    if (newItemMeta.hasLore())
+      lore_list = newItemMeta.getLore();
     return lore_list;
   }
-  
+
   @Override
   public Itemset setLore(String lore) {
     ItemMeta newItemMeta = getItemMeta();
@@ -132,30 +131,32 @@ public class Itemset implements IItemset {
     Item.setItemMeta(newItemMeta);
     return this;
   }
-  
+
   @Override
   public Itemset addLore(String lore) {
     ItemMeta newItemMeta = getItemMeta();
     List<String> lore_list = new ArrayList<String>();
-    if(newItemMeta.hasLore()) lore_list = newItemMeta.getLore();
+    if (newItemMeta.hasLore())
+      lore_list = newItemMeta.getLore();
 
     lore_list.add(lore);
-    
+
     newItemMeta.setLore(lore_list);
     Item.setItemMeta(newItemMeta);
     return this;
   }
-  
+
   @Override
   public Itemset addLore(List<String> lore) {
     ItemMeta newItemMeta = getItemMeta();
     List<String> lore_list = new ArrayList<String>();
-    if(newItemMeta.hasLore()) lore_list = newItemMeta.getLore();
-    
-    for(String str : lore) {
+    if (newItemMeta.hasLore())
+      lore_list = newItemMeta.getLore();
+
+    for (String str : lore) {
       lore_list.add(str);
     }
-    
+
     newItemMeta.setLore(lore_list);
     Item.setItemMeta(newItemMeta);
     return this;
@@ -169,10 +170,11 @@ public class Itemset implements IItemset {
     if (newItemMeta.getEnchants().size() > 0) {
       List<String> data = new ArrayList<String>();
       for (Entry<Enchantment, Integer> lore : newItemMeta.getEnchants().entrySet()) {
-        
-        //data.add(lore.getKey().getName().replace("minecraft:", "") + ":" + lore.getValue()); //1.12.2
-        data.add(lore.getKey().getKey().toString().replace("minecraft:", "") + ":" + lore.getValue()); //1.15.2
-        
+
+        // data.add(lore.getKey().getName().replace("minecraft:", "") + ":" +
+        // lore.getValue()); //1.12.2
+        data.add(lore.getKey().getKey().toString().replace("minecraft:", "") + ":" + lore.getValue()); // 1.15.2
+
       }
       return data;
     }
@@ -181,16 +183,16 @@ public class Itemset implements IItemset {
 
   @Override
   public Itemset setEnchants(List<String> Enchants) {
-    if(Enchants.size() == 0)
+    if (Enchants.size() == 0)
       return this;
     ItemMeta newItemMeta = getItemMeta();
     for (int i = 0; i < Enchants.size(); i++) {
       String[] EnchantsParts = Enchants.get(i).split(":");
       int level = Integer.parseInt(EnchantsParts[1]);
-      
-      //Enchantment enchantment = Enchantment.getByName(EnchantsParts[0]); //1.12.2
-      Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(EnchantsParts[0])); //1.15.2
-      
+
+      // Enchantment enchantment = Enchantment.getByName(EnchantsParts[0]); //1.12.2
+      Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(EnchantsParts[0])); // 1.15.2
+
       newItemMeta.addEnchant(enchantment, level, true);
     }
     Item.setItemMeta(newItemMeta);
@@ -213,7 +215,7 @@ public class Itemset implements IItemset {
 
   @Override
   public Itemset setItemFlags(List<String> ItemFlags) {
-    if(ItemFlags.size() == 0)
+    if (ItemFlags.size() == 0)
       return this;
     ItemMeta newItemMeta = getItemMeta();
     for (String itemflag : ItemFlags)
@@ -227,139 +229,60 @@ public class Itemset implements IItemset {
     Item.setAmount(amount);
     return this;
   }
-  
+
   @Override
   public boolean isUnbreakable() {
     if (!Item.hasItemMeta())
       return false;
     return getItemMeta().isUnbreakable();
   }
-  
+
   @Override
   public Itemset setUnbreakable(boolean Unbreakable) {
-    if(Unbreakable) {
+    if (Unbreakable) {
       ItemMeta newItemMeta = getItemMeta();
       newItemMeta.setUnbreakable(Unbreakable);
       Item.setItemMeta(newItemMeta);
     }
-    
+
     return this;
   }
-  
+
   @Override
   public boolean issame(ItemStack item) {
     return Item.equals(item);
   }
-  
+
   @Override
   public String itemStackToBase64() throws IllegalStateException {
-      try {
-          ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-          BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(outputStream);
-          
-          // Save every element in the list
-          dataOutput.writeObject(Item);
-
-          
-          // Serialize that array
-          dataOutput.close();
-          return Base64Coder.encodeLines(outputStream.toByteArray());
-      } catch (Exception e) {
-          throw new IllegalStateException("Unable to save item stacks.", e);
-      }
-  }
-  
-  private ItemStack itemStackFromBase64(String data) {
-        try {
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64Coder.decodeLines(data));
-            BukkitObjectInputStream dataInput = new BukkitObjectInputStream(inputStream);
-
-            // Read the serialized inventory
-            Item = (ItemStack) dataInput.readObject();
-
-            dataInput.close();
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-            Item = new ItemStack(Material.AIR);
-        }
-        return Item;
-    }
-
-  @Override
-  public String getItemNbtString() {
     try {
-      String version = getServerVersion();
-      if (version == null || version.isEmpty()) {
-        System.err.println("[MobDrop] getServerVersion() failed, cannot find CraftItemStack class.");
-        return "";
-      }
-      // CraftItemStack
-      Class<?> craftItemStackClazz = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack");
-      Method asNmsCopy = craftItemStackClazz.getMethod("asNMSCopy", ItemStack.class);
-      Object nmsItem = asNmsCopy.invoke(null, Item);
+      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+      BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(outputStream);
 
-      // NBTTagCompound
-      Class<?> nbtTagClazz;
-      if (version.startsWith("v1_17") || version.startsWith("v1_18") || version.startsWith("v1_19") || version.startsWith("v1_20")) {
-          nbtTagClazz = Class.forName("net.minecraft.nbt.NBTTagCompound");
-      } else {
-          nbtTagClazz = Class.forName("net.minecraft.server." + version + ".NBTTagCompound");
-      }
-      Object nbtTag = nbtTagClazz.getConstructor().newInstance();
+      // Save every element in the list
+      dataOutput.writeObject(Item);
 
-      // save (NMS ItemStack -> NBT)
-      Method saveMethod = null;
-      try {
-        // 1.17+ usually 'save'
-        saveMethod = nmsItem.getClass().getMethod("save", nbtTagClazz);
-      } catch (NoSuchMethodException ex) {
-        try {
-          // 1.13~1.16 may be 'b'
-          saveMethod = nmsItem.getClass().getMethod("b", nbtTagClazz);
-        } catch (NoSuchMethodException ex2) {
-          // 1.20.2+ may be 'c'
-          saveMethod = nmsItem.getClass().getMethod("c", nbtTagClazz);
-        }
-      }
-      saveMethod.invoke(nmsItem, nbtTag);
-
-      // toString
-      Method toStringMethod = nbtTagClazz.getMethod("toString");
-      return (String) toStringMethod.invoke(nbtTag);
+      // Serialize that array
+      dataOutput.close();
+      return Base64Coder.encodeLines(outputStream.toByteArray());
     } catch (Exception e) {
+      throw new IllegalStateException("Unable to save item stacks.", e);
+    }
+  }
+
+  private ItemStack itemStackFromBase64(String data) {
+    try {
+      ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64Coder.decodeLines(data));
+      BukkitObjectInputStream dataInput = new BukkitObjectInputStream(inputStream);
+
+      // Read the serialized inventory
+      Item = (ItemStack) dataInput.readObject();
+
+      dataInput.close();
+    } catch (ClassNotFoundException | IOException e) {
       e.printStackTrace();
-      return "";
+      Item = new ItemStack(Material.AIR);
     }
+    return Item;
   }
-
-  /**
-   * 取得 NMS 版本字串（如 v1_20_R1）
-   */
-  private static String getServerVersion() {
-    String name = org.bukkit.Bukkit.getServer().getClass().getPackage().getName();
-    // name 應該像 org.bukkit.craftbukkit.v1_20_R1
-    String[] parts = name.split("\\.");
-    if (parts.length >= 4) {
-      return parts[3];
-    } else {
-      // fallback，避免出錯
-      return "";
-    }
-  }
-
-  /**
-   * 取得 NBTTagCompound 路徑
-   */
-  private static String getNbtTagCompoundPath() {
-    // 區分 1.16 以上與以下的 NBT 路徑
-    String version = getServerVersion();
-    if (version.startsWith("v1_16") || version.compareTo("v1_16") > 0) {
-      // 1.16 以上
-      return "net.minecraft.nbt.NBTTagCompound";
-    } else {
-      // 1.16 以下
-      return "net.minecraft.server." + version + ".NBTTagCompound";
-    }
-  }
-
-  }
+}
