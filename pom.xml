@@ -129,7 +129,7 @@
 
   <build>
     <plugins>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.10.1</version>
@@ -137,7 +137,7 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
-      </plugin>
+      </plugin> -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.0.0</version>
@@ -175,7 +175,7 @@
         </includes>
         <!-- 排除特定資料夾 -->
         <!-- <excludes>
-          <exclude>your-folder-name/**</exclude>
+          <exclude>mc_lang/**</exclude>
         </excludes> -->
         <filtering>true</filtering>
       </resource>
