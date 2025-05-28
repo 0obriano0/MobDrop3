@@ -174,9 +174,9 @@
           <include>**/*.xml</include>
         </includes>
         <!-- 排除特定資料夾 -->
-        <excludes>
+        <!-- <excludes>
           <exclude>mc_lang/**</exclude>
-        </excludes>
+        </excludes> -->
         <filtering>true</filtering>
       </resource>
     </resources>

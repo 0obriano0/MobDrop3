@@ -11,8 +11,8 @@
   <url>https://github.com/0obriano0/MobDrop3</url>
 
   <modules>
-    <!-- <module>core</module> -->
-    <!-- <module>MobDrop-1_20</module> -->
+    <module>core</module>
+    <module>MobDrop-1_20</module>
     <module>MobDrop</module>
   </modules>
 
