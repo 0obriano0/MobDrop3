@@ -9,13 +9,22 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>MobDrop-1_20</artifactId>
     <packaging>jar</packaging>
+
+    <repositories>  
+      <!-- Spigot API -->
+      <repository>
+        <id>spigot-repo</id>
+        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+      </repository>
+    </repositories>
+
     <dependencies>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.tsob</groupId>
             <artifactId>core</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency> -->
         <!-- 加入 Spigot 1.20 的 API 依賴 -->
         <dependency>
             <groupId>org.spigotmc</groupId>
