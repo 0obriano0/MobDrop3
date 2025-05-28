@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.tsob</groupId>
+        <artifactId>MobDrop-parent</artifactId>
+        <version>3.0.3</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>MobDrop-1_20</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.tsob</groupId>
+            <artifactId>MobDrop</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!-- 加入 Spigot 1.20 的 API 依賴 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.20-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
