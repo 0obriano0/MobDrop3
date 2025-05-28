@@ -102,14 +102,19 @@ public class JsonFileIO implements IJsonFileIO {
       fileLoad = new File("./" + MobDrop.plugin.getDataFolder().toString() + "/" + url + "/" + fileName);
       fullUrl = url + "\\" + fileName;
     }
-    if (!fileLoad.exists())
-      MobDrop.plugin.saveResource(fullUrl, true);
+    
+    if (!fileLoad.exists()) createFile(fullUrl);
+      
     try {
       data = objectMapper.readTree(fileLoad);
     } catch (IOException e) {
       e.printStackTrace();
       data = null;
     }
+  }
+
+  protected void createFile(String fullUrl) {
+    MobDrop.plugin.saveResource(fullUrl, true);
   }
 
   @Override
