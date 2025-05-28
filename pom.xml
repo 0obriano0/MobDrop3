@@ -11,8 +11,9 @@
   <url>https://github.com/0obriano0/MobDrop3</url>
 
   <modules>
+    <!-- <module>core</module> -->
+    <!-- <module>MobDrop-1_20</module> -->
     <module>MobDrop</module>
-    <module>MobDrop-1_20</module>
   </modules>
 
   <properties>
@@ -34,12 +35,12 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <artifactSet>
+              <!-- <artifactSet>
                 <includes>
-                  <include>org.tsob:MobDrop</include>
+                  <include>org.tsob:core</include>
                 </includes>
-              </artifactSet>
-              <finalName>MobDrop3-with-all</finalName>
+              </artifactSet> -->
+              <finalName>MobDrop-${project.version}-with-all</finalName>
               <!-- 視情況添加 relocate 避免 class 衝突 -->
             </configuration>
           </execution>
