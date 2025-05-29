@@ -102,6 +102,7 @@ public class JsonFileIOMinecraftLang extends JsonFileIO {
     if (data == null)
       return;
     int count = 0;
+    @SuppressWarnings("deprecation")
     java.util.Iterator<Map.Entry<String, JsonNode>> iterator = data.fields();
     while (iterator.hasNext()) {
       Map.Entry<String, JsonNode> entry = iterator.next();
