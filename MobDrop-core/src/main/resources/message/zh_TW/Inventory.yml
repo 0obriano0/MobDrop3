@@ -1,0 +1,218 @@
+init:
+  Button:
+    Close:
+      Type: "BARRIER"
+      Title: "&c離開"
+      Lore:
+      - "&7關閉介面"
+    Back:
+      Type: "OAK_DOOR"
+      Title: "&a返回"
+      Lore:
+      - "&7返回上一畫面"
+    Previous:
+      Type: "ARROW"
+      Title: "&a上一頁"
+      Lore:
+      - "&7點擊讀取上一頁"
+    Next:
+      Type: "ARROW"
+      Title: "&a下一頁"
+      Lore:
+      - "&7點擊讀取下一頁"
+    Success_Remove:
+      Type: "GREEN_WOOL"
+      Title: "&a確認刪除"
+      Lore:
+      - "&7確認刪除"
+      - "&f - %msg%" 
+    Cancel:
+      Type: "RED_WOOL"
+      Title: "&a取消"
+      Lore:
+      - "&7取消返回上一頁"
+    Save:
+      Type: "BOOK"
+      Title: "&a儲存"
+      Lore:
+      - "&7點擊存檔"
+    Error_Save:
+      Type: "RED_WOOL"
+      Title: "&a儲存"
+      Lore:
+      - "&c資料有誤，請確認:"
+      - "%error%"
+    Create:
+      Type: "LIME_WOOL"
+      Title: "&a創建"
+      Lore:
+      - "&7點擊存檔創建"
+    Error_Create:
+      Type: "RED_WOOL"
+      Title: "&a創建"
+      Lore:
+      - "&c資料有誤，請確認:"
+      - "%error%"
+Inventory:
+  Minecraft_Items:
+    Title: "Minecraft 原版物品"
+  Menu:
+    Title: "目錄"
+    Button:
+      Normal:
+        Type: "GRASS_BLOCK"
+        Title: "&f原版生物"
+        Lore:
+        - "&7數量: &2%num%"
+      Custom:
+        Type: "CRAFTING_TABLE"
+        Title: "&f自定義生物"
+        Lore:
+        - "&7數量: &2%num%"
+      Items:
+        Type: "ITEM_FRAME"
+        Title: "&f物品列表"
+        Lore:
+        - "&7數量: &2%num%"
+  Items: 
+    Title: "物品列表"
+  ItemsListMob: 
+    Title: "%mobname% 未選擇列表"
+  EntitytypeList: 
+    Title: "選擇原版怪物列表"
+  MobAdd:
+    Title: "&1新增怪物"
+    Button:
+      getEntityType: #新增原版怪物時 才會出現的按鈕
+        Type: "ORANGE_WOOL"
+        Title: "&a選擇怪物"
+        Lore:
+        - "&7目前選擇:%name%"
+        - "&7系統代號:%id%"
+      Name: #自定義怪物時 才會出現的按鈕
+        Type: "ORANGE_WOOL"
+        Title: "&a設定名稱"
+        Lore:
+        - "&7使用者必需在15秒內&f"
+        - "&7在聊天窗打上名稱&f"
+        - "&7目前名稱: %name%"
+      Icon:
+        Type: "BARRIER"
+        Title: "&a設定圖示"
+        Lore:
+        - ""
+        - "&a請直接放上想要的物品當圖示"
+  MobEdit: 
+    Title: "&f設定怪物 &1%mobname%"
+  MobRemove: 
+    Title: "&f刪除怪物 &1%mobname%"
+  Mob_List:
+    Title:
+      Normal: "原版怪物列表"
+      Custom: "自定義怪物列表"
+    Button:
+      MobAdd:
+        Type: "CRAFTING_TABLE"
+        Title: "&a新增怪物"
+        Lore:
+        - "&7點擊新增"
+  Mob_Item_List:
+    Title: "&1%mobname% &f物品清單"
+    Button:
+      MobRemove:
+        Type: "RED_WOOL"
+        Title: "&a刪除怪物"
+        Lore:
+        - "&7點擊刪除怪物"
+      MobEdit:
+        Type: "WRITABLE_BOOK"
+        Title: "&a設定怪物"
+        Lore:
+        - "&7點擊修改"
+      ItemAdd:
+        Type: "CRAFTING_TABLE"
+        Title: "&a新增物品"
+        Lore:
+        - "&7點擊新增物品"
+  Mob_ItemAdd:
+    Title: "&1新增物品"
+    Button:
+      Item:
+        Type: "ORANGE_WOOL"
+        Title: "&a選擇物品"
+        Lore:
+        - "&7系統代號:%id%"
+  Mob_ItemEdit:
+    Title: "&f設定物品 &1%itemname%"
+    Type:
+      quantity: "&a%quantity%"
+      quantity_max: " &7- &a%quantity_max%"
+      mode_quantity: "&a最少掉落數量"
+      mode_quantity_max: "&b最大掉落數量"
+    Button:
+      Remove:
+        Type: "RED_WOOL"
+        Title: "&a刪除物品"
+        Lore:
+        - "&7點擊刪除物品"
+      ItemForm:
+        Type: "LIGHT_BLUE_STAINED_GLASS_PANE"
+        Title: " "
+        Lore: []
+      Chance:
+        Type: "ORANGE_DYE"
+        Title: "&6掉落機率"
+        Lore:
+        - "&7目前機率: &a%chance%%"
+      Chance_add:
+        Type: "SOUL_TORCH"
+        Title: "&6掉落機率"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7點擊 : &a+%chance_type%"
+      Chance_subtract:
+        Type: "REDSTONE_TORCH"
+        Title: "&6掉落機率"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7點擊 : &c-%chance_type%"
+      Chance_type:
+        Type: "LECTERN"
+        Title: "&6掉落機率"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7左鍵 : &a+10 倍率"
+        - "&7右鍵 : &c-10 倍率"
+        - "&7可調整倍率 : &60.01 &7- &610"
+        - "&7目前倍率: &a%chance_type%"
+      Quantity:
+        Type: "PAPER"
+        Title: "&f掉落數量"
+        Lore:
+        - "&7目前掉落數量 : &a%quantity%" #quantity 是會透過 Mob_ItemEdit.Type.quantity 跟 quantity_max 更改
+        - "&7目前更改 : %mode_quantity%"
+        - "&7左鍵切換 : &a最少掉落數量 &7跟 &b最大掉落數量"
+        - "&7右鍵點擊 : &c取消&b最大掉落數量"
+      Quantity_add:
+        Type: "SOUL_TORCH"
+        Title: "&6掉落數量"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%"
+        - "&7點擊 : &a+%quantity_type%"
+      Quantity_subtract:
+        Type: "REDSTONE_TORCH"
+        Title: "&6掉落數量"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%"
+        - "&7點擊 : &c-%quantity_type%"
+      Quantity_type:
+        Type: "LECTERN"
+        Title: "&6掉落數量"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%"
+        - "&7左鍵 : &a+10 倍率"
+        - "&7右鍵 : &c-10 倍率"
+        - "&7可調整倍率 : &61 &7- &6100"
+        - "&7目前倍率: &a%quantity_type%"
+  Mob_ItemRemove:
+    Title: "&f刪除物品 &1%itemname%"

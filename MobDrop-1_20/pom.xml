@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.tsob</groupId>
         <artifactId>MobDrop-parent</artifactId>
-        <version>3.0.3</version>
+        <version>3.0.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>MobDrop-1_20</artifactId>

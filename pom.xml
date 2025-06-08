@@ -4,16 +4,16 @@
 
   <groupId>org.tsob</groupId>
   <artifactId>MobDrop-parent</artifactId>
-  <version>3.0.3</version>
+  <version>3.0.4</version>
   <packaging>pom</packaging>
 
   <name>MobDorp3</name>
   <url>https://github.com/0obriano0/MobDrop3</url>
 
   <modules>
-    <module>core</module>
+    <module>MobDrop-core</module>
     <module>MobDrop-1_20</module>
-    <module>MobDrop</module>
+    <module>MobDrop-finish</module>
   </modules>
 
   <properties>

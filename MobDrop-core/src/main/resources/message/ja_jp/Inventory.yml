@@ -1,0 +1,218 @@
+init:
+  Button:
+    Close:
+      Type: "BARRIER"
+      Title: "&c閉じる"
+      Lore:
+      - "&7インターフェースを閉じる"
+    Back:
+      Type: "OAK_DOOR"
+      Title: "&a戻る"
+      Lore:
+      - "&7前の画面に戻る"
+    Previous:
+      Type: "ARROW"
+      Title: "&a前のページ"
+      Lore:
+      - "&7クリックして前のページを表示"
+    Next:
+      Type: "ARROW"
+      Title: "&a次のページ"
+      Lore:
+      - "&7クリックして次のページを表示"
+    Success_Remove:
+      Type: "GREEN_WOOL"
+      Title: "&a削除を確認"
+      Lore:
+      - "&7削除を確認"
+      - "&f - %msg%"
+    Cancel:
+      Type: "RED_WOOL"
+      Title: "&aキャンセル"
+      Lore:
+      - "&7キャンセルして前のページに戻る"
+    Save:
+      Type: "BOOK"
+      Title: "&a保存"
+      Lore:
+      - "&7クリックして保存"
+    Error_Save:
+      Type: "RED_WOOL"
+      Title: "&a保存"
+      Lore:
+      - "&cデータに誤りがあります。ご確認ください:"
+      - "%error%"
+    Create:
+      Type: "LIME_WOOL"
+      Title: "&a作成"
+      Lore:
+      - "&7クリックして作成を保存"
+    Error_Create:
+      Type: "RED_WOOL"
+      Title: "&a作成"
+      Lore:
+      - "&cデータに誤りがあります。ご確認ください:"
+      - "%error%"
+Inventory:
+  Minecraft_Items:
+    Title: "Minecraft バニラアイテム"
+  Menu:
+    Title: "メニュー"
+    Button:
+      Normal:
+        Type: "GRASS_BLOCK"
+        Title: "&fバニラモブ"
+        Lore:
+        - "&7数: &2%num%"
+      Custom:
+        Type: "CRAFTING_TABLE"
+        Title: "&fカスタムモブ"
+        Lore:
+        - "&7数: &2%num%"
+      Items:
+        Type: "ITEM_FRAME"
+        Title: "&fアイテムリスト"
+        Lore:
+        - "&7数: &2%num%"
+  Items:
+    Title: "アイテムリスト"
+  ItemsListMob:
+    Title: "%mobname% 未選択リスト"
+  EntitytypeList:
+    Title: "バニラモブ選択リスト"
+  MobAdd:
+    Title: "&1モブを追加"
+    Button:
+      getEntityType:
+        Type: "ORANGE_WOOL"
+        Title: "&aモブを選択"
+        Lore:
+        - "&7現在の選択:%name%"
+        - "&7システムID:%id%"
+      Name:
+        Type: "ORANGE_WOOL"
+        Title: "&a名前を設定"
+        Lore:
+        - "&715秒以内に&f"
+        - "&7チャットで名前を入力してください&f"
+        - "&7現在の名前: %name%"
+      Icon:
+        Type: "BARRIER"
+        Title: "&aアイコンを設定"
+        Lore:
+        - ""
+        - "&aアイコンにしたいアイテムを直接置いてください"
+  MobEdit:
+    Title: "&fモブ設定 &1%mobname%"
+  MobRemove:
+    Title: "&fモブ削除 &1%mobname%"
+  Mob_List:
+    Title:
+      Normal: "バニラモブリスト"
+      Custom: "カスタムモブリスト"
+    Button:
+      MobAdd:
+        Type: "CRAFTING_TABLE"
+        Title: "&aモブを追加"
+        Lore:
+        - "&7クリックして追加"
+  Mob_Item_List:
+    Title: "&1%mobname% &fアイテムリスト"
+    Button:
+      MobRemove:
+        Type: "RED_WOOL"
+        Title: "&aモブを削除"
+        Lore:
+        - "&7クリックしてモブを削除"
+      MobEdit:
+        Type: "WRITABLE_BOOK"
+        Title: "&aモブを設定"
+        Lore:
+        - "&7クリックして編集"
+      ItemAdd:
+        Type: "CRAFTING_TABLE"
+        Title: "&aアイテムを追加"
+        Lore:
+        - "&7クリックしてアイテムを追加"
+  Mob_ItemAdd:
+    Title: "&1アイテムを追加"
+    Button:
+      Item:
+        Type: "ORANGE_WOOL"
+        Title: "&aアイテムを選択"
+        Lore:
+        - "&7システムID:%id%"
+  Mob_ItemEdit:
+    Title: "&fアイテム設定 &1%itemname%"
+    Type:
+      quantity: "&a%quantity%"
+      quantity_max: " &7- &a%quantity_max%"
+      mode_quantity: "&a最小ドロップ数"
+      mode_quantity_max: "&b最大ドロップ数"
+    Button:
+      Remove:
+        Type: "RED_WOOL"
+        Title: "&aアイテムを削除"
+        Lore:
+        - "&7クリックしてアイテムを削除"
+      ItemForm:
+        Type: "LIGHT_BLUE_STAINED_GLASS_PANE"
+        Title: " "
+        Lore: []
+      Chance:
+        Type: "ORANGE_DYE"
+        Title: "&6ドロップ確率"
+        Lore:
+        - "&7現在の確率: &a%chance%%"
+      Chance_add:
+        Type: "SOUL_TORCH"
+        Title: "&6ドロップ確率"
+        Lore:
+        - "&7現在の確率 : &a%chance%%"
+        - "&7クリック : &a+%chance_type%"
+      Chance_subtract:
+        Type: "REDSTONE_TORCH"
+        Title: "&6ドロップ確率"
+        Lore:
+        - "&7現在の確率 : &a%chance%%"
+        - "&7クリック : &c-%chance_type%"
+      Chance_type:
+        Type: "LECTERN"
+        Title: "&6ドロップ確率"
+        Lore:
+        - "&7現在の確率 : &a%chance%%"
+        - "&7左クリック : &a+10 倍率"
+        - "&7右クリック : &c-10 倍率"
+        - "&7調整可能倍率 : &60.01 &7- &610"
+        - "&7現在の倍率: &a%chance_type%"
+      Quantity:
+        Type: "PAPER"
+        Title: "&fドロップ数"
+        Lore:
+        - "&7現在のドロップ数 : &a%quantity%"
+        - "&7現在の変更 : %mode_quantity%"
+        - "&7左クリックで : &a最小ドロップ数 &7と &b最大ドロップ数 を切替"
+        - "&7右クリックで : &c最大ドロップ数をキャンセル"
+      Quantity_add:
+        Type: "SOUL_TORCH"
+        Title: "&6ドロップ数"
+        Lore:
+        - "&7現在のドロップ数: &a%quantity%"
+        - "&7クリック : &a+%quantity_type%"
+      Quantity_subtract:
+        Type: "REDSTONE_TORCH"
+        Title: "&6ドロップ数"
+        Lore:
+        - "&7現在のドロップ数: &a%quantity%"
+        - "&7クリック : &c-%quantity_type%"
+      Quantity_type:
+        Type: "LECTERN"
+        Title: "&6ドロップ数"
+        Lore:
+        - "&7現在のドロップ数: &a%quantity%"
+        - "&7左クリック : &a+10 倍率"
+        - "&7右クリック : &c-10 倍率"
+        - "&7調整可能倍率 : &61 &7- &6100"
+        - "&7現在の倍率: &a%quantity_type%"
+  Mob_ItemRemove:
+    Title: "&fアイテム削除 &1%itemname%"
