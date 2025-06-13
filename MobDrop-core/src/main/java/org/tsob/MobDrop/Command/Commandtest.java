@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.tsob.MobDrop.DataBase.DataBase;
 
 public class Commandtest extends mainCommandSystem{
   public Commandtest() {
@@ -78,10 +77,10 @@ public class Commandtest extends mainCommandSystem{
     
     // DataBase.Print("test");
 
-    String path = "test";
-    if (args.length >= 1) {
-      path = args[0];
-    }
+    // String path = "test";
+    // if (args.length >= 1) {
+    //   path = args[0];
+    // }
     // DataBase.Print(DataBase.fileMinecraftLang.getString(path));
   }
 }

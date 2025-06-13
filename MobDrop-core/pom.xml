@@ -34,8 +34,8 @@
     </repository>
 
     <repository>
-        <id>sonatype-central</id>
-        <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+      <id>maven</id>
+      <url>https://repo1.maven.org/maven2/</url>
     </repository>
   </repositories>
 
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>org.tsob</groupId>
       <artifactId>MCLang-API</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.8</version>
       <scope>provided</scope>
     </dependency>
 
