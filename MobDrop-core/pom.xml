@@ -69,11 +69,12 @@
       <scope>provided</scope>
     </dependency>
 
-    <dependency>
+    <!-- 於 2025.08.26 發現 spigot 本生就有了 不需要再載入  -->
+    <!-- <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>org.tsob</groupId>
